@@ -1,0 +1,70 @@
+interface LibraryUser {
+    void RegisterAccount();
+    void RequestBook();
+}
+
+class KidUsers implements LibraryUser {
+    int age;
+    String bookType;
+
+    KidUsers(int age, String bookType) {
+        this.age = age;
+        this.bookType = bookType;
+    }
+
+    public void RegisterAccount() {
+        if (age < 12) {
+            System.out.println("You have successfully registered in the Kids Account");
+        } else {
+            System.out.println("Sorry, age must be less than 12 to register as a kid");
+        }
+    }
+
+    public void RequestBook() {
+        if (bookType.equals("kids")) {
+            System.out.println("Book issued successfully, please return the book within 10 days");
+        } else {
+            System.out.println("Oops! You are allowed to take only kid books");
+        }
+    }
+}
+
+class AdultUsers implements LibraryUser {
+    int age;
+    String bookType;
+
+    AdultUsers(int age, String bookType) {
+        this.age = age;
+        this.bookType = bookType;
+    }
+
+    public void RegisterAccount() {
+        if (age > 12) {
+            System.out.println("You have successfully registered in the Adult Account");
+        } else {
+            System.out.println("Sorry, age must be greater than 12 to register as an adult");
+        }
+    }
+
+    public void RequestBook() {
+        if (bookType.equals("Fiction")) {
+            System.out.println("Book issued successfully, please return the book within 7 days");
+        } else {
+            System.out.println("Oops! You are allowed to take only Adult Fiction books");
+        }
+    }
+}
+
+public class LibraryInterfaceDemo {
+    public static void main(String[] args) {
+        KidUsers kid1 = new KidUsers(10, "kids");
+        kid1.RegisterAccount();
+        kid1.RequestBook();
+
+        System.out.println();
+
+        AdultUsers adult1 = new AdultUsers(23, "Fiction");
+        adult1.RegisterAccount();
+        adult1.RequestBook();
+    }
+}
