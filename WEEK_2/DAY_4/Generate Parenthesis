@@ -1,0 +1,22 @@
+class Solution {
+    static List<String> ans;
+    public void bracket(String s,int no,int nc,int n){
+        if(s.length()==2*n){
+            ans.add(s);
+            return;
+        }
+        if(no<n){
+            bracket(s+"(",no+1,nc,n);
+        }
+        if(nc<no){
+            bracket(s+")",no,nc+1,n);
+        }
+    }
+    public List<String> generateParenthesis(int n) {
+        String s ="";
+        int no=0;int nc=0;
+        ans = new ArrayList<>();
+        bracket(s,no,nc,n);
+        return ans;
+    }
+}
