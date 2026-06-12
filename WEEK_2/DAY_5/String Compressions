@@ -1,0 +1,28 @@
+class Solution {
+    public int compress(char[] ch) {
+        String str2 ="";
+        int i=0,j=0;
+        while(j<ch.length){
+            if(ch[i]==ch[j]){
+                j++;
+            }
+            else{
+                str2=str2+ch[i];
+                int len = j-i;
+                if(len>1){
+                    str2=str2+len;
+                } 
+                i=j;
+            }
+        }
+        str2=str2+ch[i];
+                int len = j-i;
+                if(len>1){
+                    str2=str2+len;
+                }
+                for(i=0;i<str2.length();i++){
+                    ch[i]=str2.charAt(i);
+                }
+                return str2.length();
+       } 
+}
